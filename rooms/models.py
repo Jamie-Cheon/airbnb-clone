@@ -93,3 +93,13 @@ class Room(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+    def total_rating(self):
+        all_reviews = self.reviews.all()
+        total = 0
+        for review in all_reviews:
+            total += review.rating_average()
+        avg = round(total / len(all_reviews), 2)
+        return avg
+
+    total_rating.short_description = "Avg."
