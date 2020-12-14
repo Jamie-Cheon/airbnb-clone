@@ -9,7 +9,18 @@ class Conversation(core_models.TimeStampedModel):
     participants = models.ManyToManyField("users.User", blank=True, related_name="conversations")
 
     def __str__(self):
-        return f"{self.created}"
+        usernames = [user.username for user in self.participants.all()]
+        return ", ".join(usernames)
+
+    def count_messages(self):
+        return self.messages.count()
+
+    count_messages.short_description = "Messages"
+
+    def count_participants(self):
+        return self.participants.count()
+
+    count_participants.short_description = "Participants"
 
 
 class Message(core_models.TimeStampedModel):

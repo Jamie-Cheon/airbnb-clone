@@ -4,7 +4,6 @@ from core import models as core_models
 
 
 class AbstractItem(core_models.TimeStampedModel):
-
     """ Abstract Item """
 
     name = models.CharField(max_length=80)
@@ -17,7 +16,6 @@ class AbstractItem(core_models.TimeStampedModel):
 
 
 class RoomType(AbstractItem):
-
     """ RoomType Model Definition """
 
     pass
@@ -27,7 +25,6 @@ class RoomType(AbstractItem):
 
 
 class Amenity(AbstractItem):
-
     """ Amenity Model Definition """
 
     pass
@@ -37,7 +34,6 @@ class Amenity(AbstractItem):
 
 
 class Facility(AbstractItem):
-
     """ Facility Model Definition """
 
     pass
@@ -47,7 +43,6 @@ class Facility(AbstractItem):
 
 
 class HouseRule(AbstractItem):
-
     """ HouseRule Model Definition """
 
     pass
@@ -57,7 +52,6 @@ class HouseRule(AbstractItem):
 
 
 class Photo(core_models.TimeStampedModel):
-
     """ Photo Model Definition """
 
     caption = models.CharField(max_length=80)
@@ -69,7 +63,6 @@ class Photo(core_models.TimeStampedModel):
 
 
 class Room(core_models.TimeStampedModel):
-
     """ Room Model Definition """
 
     name = models.CharField(max_length=140)
@@ -96,10 +89,13 @@ class Room(core_models.TimeStampedModel):
 
     def total_rating(self):
         all_reviews = self.reviews.all()
-        total = 0
-        for review in all_reviews:
-            total += review.rating_average()
-        avg = round(total / len(all_reviews), 2)
+        avg = 0
+        if all_reviews:
+            for review in all_reviews:
+                avg += review.rating_average()
+            avg = round(avg / len(all_reviews), 2)
+        else:
+            return "No reviews (yet)"
         return avg
 
     total_rating.short_description = "Avg."
