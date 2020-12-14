@@ -19,8 +19,8 @@ class Reservation(core_models.TimeStampedModel):
     status = models.CharField(choices=STATUS_CHOICES, max_length=12, default=STATUS_PENDING)
     check_in = models.DateField()
     check_out = models.DateField()
-    guest = models.ForeignKey("users.User", on_delete=models.CASCADE)
-    room = models.ForeignKey("rooms.Room", on_delete=models.CASCADE)
+    guest = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="reservations")
+    room = models.ForeignKey("rooms.Room", on_delete=models.CASCADE, related_name="reservations")
 
     def __str__(self):
         return f"{self.room} - {self.check_in}"

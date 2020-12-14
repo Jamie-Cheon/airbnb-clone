@@ -62,7 +62,7 @@ class Photo(core_models.TimeStampedModel):
 
     caption = models.CharField(max_length=80)
     file = models.ImageField()
-    room = models.ForeignKey("Room", on_delete=models.CASCADE)
+    room = models.ForeignKey("Room", on_delete=models.CASCADE, related_name="photos")
 
     def __str__(self):
         return self.caption
@@ -85,8 +85,8 @@ class Room(core_models.TimeStampedModel):
     check_in = models.TimeField()
     check_out = models.TimeField()
     instant_book = models.BooleanField(default=False)
-    host = models.ForeignKey("users.User", on_delete=models.CASCADE)
-    room_type = models.ForeignKey("RoomType", on_delete=models.SET_NULL, null=True)
+    host = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="rooms")
+    room_type = models.ForeignKey("RoomType", on_delete=models.SET_NULL, null=True, related_name="rooms")
     amenities = models.ManyToManyField("Amenity", blank=True)
     facilities = models.ManyToManyField("Facility", blank=True)
     house_rules = models.ManyToManyField("HouseRule", blank=True)
