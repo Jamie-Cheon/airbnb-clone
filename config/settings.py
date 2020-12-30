@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+import json
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -141,3 +141,16 @@ AUTH_USER_MODEL = "users.User"
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
 MEDIA_URL = "/media/"
+
+
+with open(os.path.join(BASE_DIR, '.config_secret', 'secret_common.json')) as f:
+    config_secret_common_str = f.read()
+
+config_secret = json.loads(config_secret_common_str)
+
+# Email Configuration
+EMAIL_HOST = config_secret["EMAIL"]["hostname"]
+EMAIL_PORT = config_secret["EMAIL"]["port"]
+EMAIL_HOST_USER = config_secret["EMAIL"]["username"]
+EMAIL_HOST_PASSWORD = config_secret["EMAIL"]["password"]
+EMAIL_FROM = config_secret["EMAIL"]["from_email"]

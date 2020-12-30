@@ -142,3 +142,5 @@ cython_debug/
 uploads/
 
 .idea
+
+.config_secret/*
