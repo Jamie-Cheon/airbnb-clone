@@ -3,8 +3,13 @@
     Log In
 {% endblock page_name %}
 
+{% block search-bar %}
+{% endblock %}
+
 {% block content %}
-    <h3>login</h3>
+
+    {% include "partials/social_login.html" %}
+
     <form method="post" action="{% url "users:login" %}">
         {% csrf_token %}
         {{ form.as_p }}

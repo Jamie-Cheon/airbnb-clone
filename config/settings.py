@@ -154,3 +154,7 @@ EMAIL_PORT = config_secret["EMAIL"]["port"]
 EMAIL_HOST_USER = config_secret["EMAIL"]["username"]
 EMAIL_HOST_PASSWORD = config_secret["EMAIL"]["password"]
 EMAIL_FROM = config_secret["EMAIL"]["from_email"]
+
+# github login
+CLIENT_ID = config_secret["GITHUB_LOGIN"]["id"]
+CLIENT_SECRET = config_secret["GITHUB_LOGIN"]["secret"]
