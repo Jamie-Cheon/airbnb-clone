@@ -156,5 +156,10 @@ EMAIL_HOST_PASSWORD = config_secret["EMAIL"]["password"]
 EMAIL_FROM = config_secret["EMAIL"]["from_email"]
 
 # github login
-CLIENT_ID = config_secret["GITHUB_LOGIN"]["id"]
-CLIENT_SECRET = config_secret["GITHUB_LOGIN"]["secret"]
+GITHUB_ID = config_secret["GITHUB_LOGIN"]["id"]
+GITHUB_SECRET = config_secret["GITHUB_LOGIN"]["secret"]
+
+# kakao login
+KAKAO_ID = config_secret["KAKAO_LOGIN"]["id"]
+KAKAO_SECRET = config_secret["KAKAO_LOGIN"]["secret"]
+
