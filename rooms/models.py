@@ -108,3 +108,7 @@ class Room(core_models.TimeStampedModel):
         return avg
 
     total_rating.short_description = "Avg."
+
+    def first_photo(self):
+        photo, = self.photos.all()[:1]
+        return photo.file.url
