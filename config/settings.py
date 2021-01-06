@@ -145,23 +145,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 MEDIA_URL = "/media/"
 
 
-with open(os.path.join(BASE_DIR, '.config_secret', 'secret_common.json')) as f:
-    config_secret_common_str = f.read()
-
-config_secret = json.loads(config_secret_common_str)
-
 # Email Configuration
-EMAIL_HOST = config_secret["EMAIL"]["hostname"]
-EMAIL_PORT = config_secret["EMAIL"]["port"]
-EMAIL_HOST_USER = config_secret["EMAIL"]["username"]
-EMAIL_HOST_PASSWORD = config_secret["EMAIL"]["password"]
-EMAIL_FROM = config_secret["EMAIL"]["from_email"]
+EMAIL_HOST = os.environ.get("MAILGUN_HOSTNAME")
+EMAIL_PORT = os.environ.get("MAILGUN_PORT")
+EMAIL_HOST_USER = os.environ.get("MAILGUN_USERNAME")
+EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_PASSWORD")
+EMAIL_FROM = os.environ.get("MAILGUN_FROM_EMAIL")
 
 # github login
-GITHUB_ID = config_secret["GITHUB_LOGIN"]["id"]
-GITHUB_SECRET = config_secret["GITHUB_LOGIN"]["secret"]
+GITHUB_ID = os.environ.get("GITHUB_ID")
+GITHUB_SECRET = os.environ.get("GITHUB_SECRET")
 
 # kakao login
-KAKAO_ID = config_secret["KAKAO_LOGIN"]["id"]
-KAKAO_SECRET = config_secret["KAKAO_LOGIN"]["secret"]
+KAKAO_ID = os.environ.get("KAKAO_ID")
+KAKAO_SECRET = os.environ.get("KAKAO_SECRET")
 

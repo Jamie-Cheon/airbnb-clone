@@ -143,4 +143,6 @@ uploads/
 node_modules/
 
 .idea
+bfg-1.13.1.jar
+.git.bfg-report/
 
