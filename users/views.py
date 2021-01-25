@@ -1,4 +1,5 @@
 import requests
+from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import FormView, DetailView, UpdateView
 from django.shortcuts import redirect, reverse
 from django.urls import reverse_lazy
@@ -223,4 +224,7 @@ class UpdateProfileView(UpdateView):
         return self.request.user
 
 
+class UpdatePasswordView(PasswordChangeView):
 
+    template_name = "users/update_password.html"
+    form_class = forms.MyPasswordChangeForm

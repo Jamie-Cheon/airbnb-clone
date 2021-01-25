@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import password_validation
+from django.contrib.auth.forms import PasswordChangeForm
 from . import models
 
 
@@ -59,3 +60,10 @@ class LogInForm(forms.Form):
                 self.add_error("password", forms.ValidationError("Password is wrong."))
         except models.User.DoesNotExist:
             self.add_error("email", forms.ValidationError("User does not exist."))
+
+
+class MyPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Old Password"}))
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "New Password"}))
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={"placeholder": "Confirm Password"}))
+
