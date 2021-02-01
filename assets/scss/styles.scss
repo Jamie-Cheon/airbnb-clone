@@ -53,6 +53,10 @@ form {
   }
 }
 
+.border_section {
+  @apply border-b border-gray-300 pb-8 mt-8;
+}
+
 @keyframes messageFadeIn {
   0% {
     opacity: 0;
