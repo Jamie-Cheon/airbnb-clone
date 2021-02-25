@@ -160,3 +160,6 @@ GITHUB_SECRET = os.environ.get("GITHUB_SECRET")
 KAKAO_ID = os.environ.get("KAKAO_ID")
 KAKAO_SECRET = os.environ.get("KAKAO_SECRET")
 
+
+# Auth
+LOGIN_URL = "/users/login/"
